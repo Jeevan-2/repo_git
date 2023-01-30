@@ -1,0 +1,15 @@
+---
+- name: install git, vim, mariadb-server on remote servers
+  hosts: all
+  become: true
+  gather_facts: true
+  tasks:
+    - name: install mutiple packages
+      package:
+        name: "{{item}}"
+        state: present
+      loop:
+        - git
+        - vim
+        - mariadb-server
+
